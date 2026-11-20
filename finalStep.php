@@ -1,42 +1,47 @@
 <?php
+session_start();
+
 include("finalStepHeader.html");
 
-//translate the comments below into PHP code underneath each comment
+echo "Firstname: " . htmlspecialchars($_SESSION['passengerFN']);
+echo "<br>";
 
-//start a session
+echo "Surname: " . htmlspecialchars($_SESSION['passengerSN']);
+echo "<br>";
 
-//echo the passenger's firstname from the appropriate session variable
+if ($_SESSION['luggage'] == 1) {
+    echo "Bags under 10 KG: " . htmlspecialchars($_SESSION['subTenKG']);
+    echo "<br>";
 
-echo "<BR>";
-
-//echo the passenger's surname from the appropriate session variable
-
-echo "<BR>";
-
-// if the luggage session variable is on
-
-    //echo the amount of bags under ten kilos the passenger is bringing
-    
-    echo "<BR>";
-    
-    //echo the amount of bags over ten kilos the passenger is bringing
-    
-//end if block
-
+    echo "Bags between 10 and 20 KG: " . htmlspecialchars($_SESSION['overTenKG']);
+}
 ?>
-</h4></div></div>
+</div>
+</div>
+</h4>
+
 <form method="POST" action="confirm.php">
-    <div class="form-group">        
-        <label class="control-label col-sm-12 text-center">Is the above information correct?</label>
+
+    <div class="form-group">
+        <label class="control-label col-sm-12 text-center">
+            Is the above information correct?
+        </label>
+
         <div class="checkbox col-sm-12 text-center">
-          <label><input type="checkbox" name="confirm">Yes</input>
+            <label>
+                <input type="checkbox" name="confirm" value="Yes">
+                Yes
+            </label>
         </div>
     </div>
-   
-        
-      <div class="col-sm-12 text-center">
-        <button type="submit" class="btn btn-default">Continue</button>
-      </div>
+
+    <div class="col-sm-12 text-center">
+        <button type="submit" class="btn btn-default">
+            Continue
+        </button>
     </div>
-    
+
 </form>
+
+</body>
+</html>
